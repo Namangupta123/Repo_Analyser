@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "systemlab-repo-analyzer"
+version = "0.1.0"
+description = "Deterministic repository file-dependency analyzer"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.10,<3",
+  "tree-sitter>=0.24,<0.26",
+  "tree-sitter-javascript>=0.23,<0.26",
+  "tree-sitter-typescript>=0.23,<0.24",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9"]
+
+[project.scripts]
+repo-analyzer = "repo_analyzer.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/repo_analyzer"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
