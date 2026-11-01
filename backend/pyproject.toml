@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling==1.33.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "systemlab-backend"
+version = "0.1.0"
+description = "FastAPI backend and durable analysis worker for SystemLab"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.162.0",
+  "httpx==0.28.1",
+  "itsdangerous==2.2.0",
+  "psycopg[binary,pool]==3.3.6",
+  "pydantic-settings==2.13.1",
+  "supabase==2.33.0",
+  "systemlab-repo-analyzer==0.1.0",
+  "uvicorn[standard]==0.41.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pip-tools==7.5.3",
+  "pytest==8.4.2",
+  "pytest-cov==7.0.0",
+]
+
+[project.scripts]
+systemlab-api = "systemlab_backend.main:run"
+systemlab-worker = "systemlab_backend.worker:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/systemlab_backend"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
