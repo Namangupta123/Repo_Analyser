@@ -7,3 +7,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .coverage
+frontend/.env
+frontend/node_modules
+frontend/dist/
+frontend/package-lock.json
