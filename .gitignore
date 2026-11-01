@@ -1,3 +1,9 @@
 Agents.md
 docs
 analyzer/analysis
+backend/.env
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
